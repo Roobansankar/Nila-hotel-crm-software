@@ -56,7 +56,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
 
-// CORS
+// ✅ CORS configuration for both frontend URLs
 const corsOptions = {
   origin: [
     "https://nila-hotel-crm-software-9nac.vercel.app",
@@ -70,13 +70,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// MongoDB connection
+// ✅ MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-// Routes
+// ✅ Routes
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/waiter", require("./routes/waiterRoutes"));
@@ -84,6 +84,7 @@ app.use("/api/categories", require("./routes/categories"));
 app.use("/api/items", require("./routes/items"));
 app.use("/api/prices", require("./routes/prices"));
 
-// ❌ Remove app.listen()
-// ✅ Export for Vercel
+// ❌ Do NOT use app.listen() on Vercel
+
+// ✅ Export app as serverless function
 module.exports = app;
