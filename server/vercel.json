@@ -11,7 +11,7 @@
       "src": "/api/(.*)",
       "dest": "server/server.js",
       "headers": {
-        "Access-Control-Allow-Origin": "https://nila-hotel-crm-software-9nac.vercel.app",
+        "Access-Control-Allow-Origin": "https://nila-hotel-crm-software-9nac.vercel.app, https://nila-hotel-crm-software-9nac-kmydewckd-rooban-sankars-projects.vercel.app",
         "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,PATCH,OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization"
       }
