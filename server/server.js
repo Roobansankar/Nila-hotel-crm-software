@@ -6,22 +6,9 @@
 // dotenv.config();
 // const app = express();
 
-// // ✅ Explicit CORS config for Vercel
-// const corsOptions = {
-//   origin: [
-//     "https://nila-hotel-crm-software-9nac.vercel.app",
-//     "https://nila-hotel-crm-software-9nac-kmydewckd-rooban-sankars-projects.vercel.app",
-//   ],
-//   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-//   allowedHeaders: ["Content-Type", "Authorization"],
-//   credentials: true,
-// };
-
-// app.use(cors(corsOptions));
-
 // app.use(express.json());
+// app.use(cors());
 
-// // MongoDB connection
 // mongoose
 //   .connect(process.env.MONGO_URI, {
 //     useNewUrlParser: true,
@@ -30,23 +17,21 @@
 //   .then(() => console.log("MongoDB Connected"))
 //   .catch((err) => console.log(err));
 
-// // Routes
-// app.use("/api/admin", require("./routes/adminRoutes"));
-// app.use("/api/user", require("./routes/userRoutes"));
-// app.use("/api/waiter", require("./routes/waiterRoutes"));
+// const adminRoutes = require("./routes/adminRoutes");
+// app.use("/api/admin", adminRoutes);
+
+// const userRoutes = require("./routes/userRoutes");
+// app.use("/api/user", userRoutes);
+
+// const waiterRoutes = require("./routes/waiterRoutes");
+// app.use("/api/waiter", waiterRoutes);
+
 // app.use("/api/categories", require("./routes/categories"));
 // app.use("/api/items", require("./routes/items"));
 // app.use("/api/prices", require("./routes/prices"));
 
 // const PORT = process.env.PORT || 5000;
-
-// // ✅ If running locally
-// if (process.env.NODE_ENV !== "production") {
-//   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-// }
-
-// // ✅ Export for Vercel
-// module.exports = app;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -56,25 +41,26 @@ const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
 
-// ✅ CORS configuration for your single frontend
-app.use(
-  cors({
-    origin: "https://nila-hotel-crm-software-9nac.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+// ✅ Explicit CORS config for Vercel
+const corsOptions = {
+  origin: "*", // allow any origin
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
-// ✅ MongoDB connection
+// MongoDB connection
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-// ✅ Routes
+// Routes
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/waiter", require("./routes/waiterRoutes"));
@@ -82,5 +68,12 @@ app.use("/api/categories", require("./routes/categories"));
 app.use("/api/items", require("./routes/items"));
 app.use("/api/prices", require("./routes/prices"));
 
-// ❌ Do NOT use app.listen() on Vercel
+const PORT = process.env.PORT || 5000;
+
+// ✅ If running locally
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+// ✅ Export for Vercel
 module.exports = app;
