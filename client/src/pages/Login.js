@@ -373,6 +373,41 @@ const Login = ({ setAuth }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+
+  //   let username, password, url;
+
+  //   if (loginType === "admin") {
+  //     username = adminUsername;
+  //     password = adminPassword;
+  //     url = "http://localhost:5000/api/admin/login";
+  //   } else if (loginType === "user") {
+  //     username = userUsername;
+  //     password = userPassword;
+  //     url = "http://localhost:5000/api/user/login";
+  //   } else {
+  //     username = waiterUsername;
+  //     password = waiterPassword;
+  //     url = "http://localhost:5000/api/waiter/login";
+  //     localStorage.setItem("waiterUsername", waiterUsername);
+  //   }
+
+  //   try {
+  //     const res = await axios.post(url, { username, password });
+  //     localStorage.setItem("token", res.data.token);
+  //     localStorage.setItem("loginType", loginType);
+  //     setAuth(true);
+
+  //     if (loginType === "admin") navigate("/");
+  //     else if (loginType === "user") navigate("/user-kots");
+  //     else navigate("/waiter-dashboard");
+  //   } catch (err) {
+  //     setError(err.response?.data?.message || "Login failed");
+  //   }
+  // };
+  const baseUrl = process.env.REACT_APP_API_BASE;
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -381,15 +416,15 @@ const Login = ({ setAuth }) => {
     if (loginType === "admin") {
       username = adminUsername;
       password = adminPassword;
-      url = "http://localhost:5000/api/admin/login";
+      url = `${baseUrl}/api/admin/login`;
     } else if (loginType === "user") {
       username = userUsername;
       password = userPassword;
-      url = "http://localhost:5000/api/user/login";
+      url = `${baseUrl}/api/user/login`;
     } else {
       username = waiterUsername;
       password = waiterPassword;
-      url = "http://localhost:5000/api/waiter/login";
+      url = `${baseUrl}/api/waiter/login`;
       localStorage.setItem("waiterUsername", waiterUsername);
     }
 
