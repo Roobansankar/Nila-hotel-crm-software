@@ -43,12 +43,14 @@ const app = express();
 
 // ✅ Explicit CORS config for Vercel
 const corsOptions = {
-  origin: ["https://nila-hotel-crm-software-9nac.vercel.app"], // frontend URL
+  origin: [
+    "https://nila-hotel-crm-software-9nac.vercel.app",
+    "https://nila-hotel-crm-software-9nac-kmydewckd-rooban-sankars-projects.vercel.app",
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
-app.use(cors(corsOptions));
 
 app.use(cors(corsOptions));
 
