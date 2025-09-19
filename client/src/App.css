@@ -1,0 +1,13 @@
+/* write your css here */
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content-area {
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 56px); /* 56px = Bootstrap Navbar height */
+}

@@ -1,0 +1,28 @@
+/* .table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  white-space: nowrap;
+}
+
+table th {
+  background-color: #f7f7f7;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  table {
+    min-width: 600px;
+  }
+} */
