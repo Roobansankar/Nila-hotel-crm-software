@@ -1,2 +1,2 @@
-const app = require("../server"); // import the express app
-module.exports = app; // export for Vercel serverless
+const app = require("../server.js");
+module.exports = app;
