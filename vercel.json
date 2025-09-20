@@ -14,19 +14,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/api/index.js"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/client/build/static/$1"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/client/build/favicon.ico"
+      "dest": "/server/api/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/build/index.html"
+      "dest": "/index.html"
     }
   ]
 }
