@@ -7,12 +7,13 @@ dotenv.config();
 const app = express();
 
 // ✅ CORS config
-const corsOptions = {
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json());
 
@@ -25,7 +26,7 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-// ✅ Routes (no `/api` prefix here, Vercel adds it automatically)
+// ✅ Routes (no /api prefix here – Vercel adds it automatically)
 app.use("/admin", require("./routes/adminRoutes"));
 app.use("/user", require("./routes/userRoutes"));
 app.use("/waiter", require("./routes/waiterRoutes"));
@@ -40,5 +41,5 @@ if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
 
-// Export for Vercel serverless
+// Export for Vercel
 module.exports = app;
