@@ -282,17 +282,28 @@ const MenuPage = () => {
   const [newItemPrice, setNewItemPrice] = useState("");
   const [editingItem, setEditingItem] = useState(null);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
 
-  const fetchMenu = async () => {
-    const res = await axios.get(API_URL);
-    setMenuData(res.data);
-    if (res.data.length && !selectedCategoryId) {
-      setSelectedCategoryId(res.data[0].id);
-    }
-  };
+  // const fetchMenu = async () => {
+  //   const res = await axios.get(API_URL);
+  //   setMenuData(res.data);
+  //   if (res.data.length && !selectedCategoryId) {
+  //     setSelectedCategoryId(res.data[0].id);
+  //   }
+  // };
+  useEffect(() => {
+    const fetchMenu = async () => {
+      const res = await axios.get(API_URL);
+      setMenuData(res.data);
+      if (res.data.length && !selectedCategoryId) {
+        setSelectedCategoryId(res.data[0].id);
+      }
+    };
+
+    fetchMenu();
+  }, [selectedCategoryId]);
 
   const handleAddCategory = async () => {
     if (!newCategory.trim()) return alert("Enter a category name");

@@ -263,14 +263,14 @@ const Orders = () => {
   };
 
   // Get data based on dropdown filter
-  const getFilteredDropdownData = () => {
-    if (filter === "today") return { today: categorizedInvoices.today };
-    if (filter === "yesterday")
-      return { yesterday: categorizedInvoices.yesterday };
-    if (filter === "lastWeek")
-      return { lastWeek: categorizedInvoices.lastWeek };
-    return categorizedInvoices;
-  };
+  // const getFilteredDropdownData = () => {
+  //   if (filter === "today") return { today: categorizedInvoices.today };
+  //   if (filter === "yesterday")
+  //     return { yesterday: categorizedInvoices.yesterday };
+  //   if (filter === "lastWeek")
+  //     return { lastWeek: categorizedInvoices.lastWeek };
+  //   return categorizedInvoices;
+  // };
 
   // Search mode: If searchDate is present, ignore dropdown filter
   const searchResults = searchDate
