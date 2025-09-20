@@ -387,6 +387,39 @@ const Home = () => {
   const [itemsByCategory, setItemsByCategory] = useState({});
   const [priceMap, setPriceMap] = useState({});
 
+  // useEffect(() => {
+  //   const fetchMenuData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://63ae7fb43e46516916732319.mockapi.io/Rooban"
+  //       );
+  //       const data = await response.json();
+  //       const categories = data.map((entry) => entry.category);
+  //       const itemsByCat = {};
+  //       const prices = {};
+
+  //       data.forEach(({ category, items }) => {
+  //         itemsByCat[category] = items.map((item) => item.name);
+  //         items.forEach((item) => {
+  //           prices[item.name] = item.price;
+  //         });
+  //       });
+
+  //       setFoodCategories(categories);
+  //       setItemsByCategory(itemsByCat);
+  //       setPriceMap(prices);
+
+  //       if (!selectedCategory && categories.length > 0) {
+  //         setSelectedCategory(categories[0]);
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to fetch menu data:", error);
+  //     }
+  //   };
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   fetchMenuData();
+  // }, []);
   useEffect(() => {
     const fetchMenuData = async () => {
       try {
@@ -417,9 +450,8 @@ const Home = () => {
       }
     };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchMenuData();
-  }, []);
+  }, [selectedCategory]);
 
   const updateTableStatusAPI = async (tableId, newStatus) => {
     try {
