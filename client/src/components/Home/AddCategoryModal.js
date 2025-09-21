@@ -122,7 +122,7 @@ import axios from "axios";
 // Dynamic API base
 const API_BASE =
   process.env.NODE_ENV === "production"
-    ? "" // same domain on Vercel
+    ? "https://nila-hotel-crm-software-9gdn.vercel.app" // same domain on Vercel
     : "http://localhost:5000";
 
 const AddCategoryModal = ({

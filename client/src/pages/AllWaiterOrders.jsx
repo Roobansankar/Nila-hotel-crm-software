@@ -62,7 +62,9 @@ import axios from "axios";
 
 // Dynamic API base (local vs production)
 const API_BASE =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:5000";
+  process.env.NODE_ENV === "production"
+    ? "https://nila-hotel-crm-software-9gdn.vercel.app"
+    : "http://localhost:5000";
 
 const AllWaiterOrders = () => {
   const [usernames, setUsernames] = useState([]);
