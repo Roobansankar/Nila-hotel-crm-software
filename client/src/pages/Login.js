@@ -516,7 +516,7 @@ const Login = ({ setAuth }) => {
   // ✅ Base API URL (switches automatically)
   const API_BASE =
     process.env.NODE_ENV === "production"
-      ? "" // empty means use the same domain on Vercel
+      ? "https://nila-hotel-crm-software-9gdn.vercel.app" // empty means use the same domain on Vercel
       : "http://localhost:5000"; // local backend
 
   const handleLogin = async (e) => {
