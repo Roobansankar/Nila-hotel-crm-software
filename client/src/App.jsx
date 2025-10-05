@@ -183,6 +183,10 @@ import Customers from "./pages/Customers";
 import BillKotPrint from "./pages/Bill-kotPrint";
 import CreateWaiter from "./pages/CreateWaiter";
 import WaiterDashboard from "./pages/WaiterDashboard";
+import KitchenUser from "./pages/KitchenUser";
+import WaiterUser from "./pages/WaiterUser";
+import "@fontsource/poppins"; // default 400
+import "@fontsource/kaushan-script";
 
 const App = () => {
   const [auth, setAuth] = useState(!!localStorage.getItem("token"));
@@ -234,6 +238,8 @@ const App = () => {
           <Route path="create-user" element={<CreateUser />} />
           <Route path="operations/bill-kot-print" element={<BillKotPrint />} />
           <Route path="create-waiter" element={<CreateWaiter />} />
+          <Route path="all-kitchen-users" element={<KitchenUser />} />
+          <Route path="all-waiter-users" element={<WaiterUser />} />
         </Route>
       )}
 
@@ -248,7 +254,7 @@ const App = () => {
           }
         />
       )} */}
-      {loginType === "user" && (
+      {loginType === "kitchen" && (
         <Route
           path="/user-kots"
           element={

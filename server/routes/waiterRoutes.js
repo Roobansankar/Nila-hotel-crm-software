@@ -7,25 +7,6 @@ const auth = require("../middleware/auth"); // Optional if needed
 const router = express.Router();
 
 // Create Waiter (Only Admin can create)
-// router.post("/create", auth, async (req, res) => {
-//   try {
-//     const { username, password } = req.body;
-
-//     const existing = await Waiter.findOne({ username });
-//     if (existing) {
-//       return res.status(400).json({ message: "Waiter already exists" });
-//     }
-
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const waiter = new Waiter({ username, password: hashedPassword });
-
-//     await waiter.save();
-//     res.json({ message: "Waiter created successfully" });
-//   } catch (err) {
-//     console.error("Error creating waiter:", err);
-//     res.status(500).json({ error: err.message });
-//   }
-// });
 
 router.post("/create", auth, async (req, res) => {
   try {
@@ -87,6 +68,15 @@ router.get("/usernames", async (req, res) => {
     res.json(usernames);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch waiter usernames" });
+  }
+});
+
+router.get("/", auth, async (req, res) => {
+  try {
+    const users = await Waiter.find().select("username _id");
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 

@@ -96,7 +96,9 @@ const CreateUser = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Create User</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Create Kitchen User
+        </h2>
 
         {message && (
           <p

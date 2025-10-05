@@ -4,8 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   @apply font-poppins bg-gray-400;
+} */
+
+body {
+  @apply font-poppins;
 }
 
 body {

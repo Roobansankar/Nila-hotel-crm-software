@@ -28,6 +28,17 @@ router.post("/create", auth, async (req, res) => {
   }
 });
 
+// Get Logged-in User's Username (Protected Route)
+// Get All Users (Protected Route)
+router.get("/", auth, async (req, res) => {
+  try {
+    const users = await User.find().select("username _id");
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // User Login
 router.post("/login", async (req, res) => {
   try {
